@@ -11,7 +11,7 @@
 ***/
 
 // Global Variables go here
-var sprites = new Array(10000);
+var sprites = new Array(10);
 
 function setup(){
   // this function will run once
@@ -27,22 +27,34 @@ function draw(){
   background(200); //light gray background
   for(let i = 0; i < sprites.length; i++){
     sprites[i].display();
+    sprites[i].move();
   }
-
-  
 }
 
 function Sprite (tempX, tempY){
   this.x = tempX;
   this.y = tempY;
+  this.xSpeed = random(-2, 2);
+  this.ySpeed = random(-2, 2);
+
+  this.move = function(){
+    this.x += this.xSpeed;
+    this.y += this.ySpeed;
+    if(this.x > width || this.x < 0){
+      this.xSpeed *= -1;
+    }
+    if(this.y > height || this.y < 0){
+      this.ySpeed *= -1;
+    }
+  }
 
   this.display = function(){
-    push();
-    translate(this.x, this.y);
-    rectMode(CENTER);
-    fill(255, 0, 0, 50);
-    rect(0, 0, 75);
-    pop();
+    push();// create a new lyer
+    translate(this.x, this.y); // move the layer's origin point on the canvas
+    rectMode(CENTER); // center the rectangle
+    fill(255, 0, 0, 50); // transparent red
+    rect(0, 0, 75); // rectangle
+    pop(); // dispose of the layer
   }
 
 }
