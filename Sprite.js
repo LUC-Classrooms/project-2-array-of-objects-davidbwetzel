@@ -23,7 +23,7 @@ function Sprite (tempX, tempY){
       translate(this.x, this.y); // move the layer's origin point on the canvas
       rectMode(CENTER); // center the rectangle
       fill(255, 0, 0, 50); // transparent red
-      rect(0, 0, 75); // rectangle
+      rect(0, 0, 75, 75, 10); // rectangle
       ellipse(-20, -10, 5, 10)
       ellipse(20, -10, 5, 10)
       pop(); // dispose of the layer
